@@ -4,6 +4,12 @@
     height: 15px;
     margin: 5px;
 }
+
+#btnFetch{
+    margin: 5px;
+    padding: 0px;
+}
+
 #container{
     display: flex;
     justify-content: left;

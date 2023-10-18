@@ -21,12 +21,10 @@ const traerDatos = () => {
 }
 
 const mostrarComments = (data) => {
-    data.map(comment => {
-        const li = document.createElement("li");
-        li.textContent = comment.body;
-        numeralComments.appendChild(li);
-    })
-}
+    data.forEach(comment => {
+        numeralComments.appendChild(document.createElement("li")).textContent = comment.body;
+    });
+};
 
 
 

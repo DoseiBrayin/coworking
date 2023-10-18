@@ -1,0 +1,10 @@
+#loading-gif {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin: 5px;
+}
+#container{
+    display: flex;
+    justify-content: left;
+}

@@ -17,7 +17,7 @@ const traerDatos = () => {
             alert("Error al traer los datos");
             console.error(error);
         })
-        .finally(()=> container.removeChild(img))
+        .finally(container.removeChild(img))
 }
 
 const mostrarComments = (data) => {

@@ -21,12 +21,11 @@ const traerDatos = () => {
 }
 
 const mostrarComments = (data) => {
-    const comments = data.map(comment => {
+    data.map(comment => {
         const li = document.createElement("li");
         li.textContent = comment.body;
-        return li;
+        numeralComments.appendChild(li);
     })
-    comments.map(element => numeralComments.appendChild(element))
 }
 
 

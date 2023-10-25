@@ -21,7 +21,7 @@ const fetchUsuarios = async () => {
 const mostrarUsuarios = (data) => {
     const tbody = tblUsuarios.querySelector('tbody');
     tbody.innerHTML = '';
-    data.forEach(usuario => {
+    data.map(usuario => {
         const fila = document.createElement('tr');
         fila.id = usuario.id;
         fila.innerHTML = `

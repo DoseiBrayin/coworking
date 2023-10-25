@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btnRefrescar" onclick="refrescar()">Refrescar</button>
+    <table id="tblUsuarios">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Username</th>
+                <th>WebSite</th>
+                <th>Eliminar usuario</th>
+                <th>Editar usuario</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <section id="secForm">
+        <h3>Editar</h3>
+        <form action="submit" id="form">
+            <input type="text" name="id" id="id" placeholder="1" readonly>
+            <input type="text" name="name" id="name" placeholder="chavez">
+            <input type="text" name="username" id="username" placeholder="ChavezGalactico">
+            <input type="text" name="website" id="website" placeholder="chavezgalactico.com">
+            <input type="submit" value="Enviar" id="btnEnviar">
+        </form>
+    </section>
+
+</body>
+<script src="index.js"></script>
+
+</html>

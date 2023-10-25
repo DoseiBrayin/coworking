@@ -1,0 +1,44 @@
+table {
+    border-collapse: collapse;
+    margin: 10px;
+    width: 100%;
+}
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+tr:hover {
+    background-color: #ddd;
+}
+.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#btnbtnRefrescar{
+    padding: 10px;
+    margin: 10px;
+}
+
+form {
+    border: 3px solid #f1f1f1;
+    width: 50%;
+    margin: 10px;
+    padding: 10px;
+}
+
+form input{
+    padding: 10px;
+    margin: 5px;
+}
+
+#secForm{
+    display: none;
+}

@@ -7,60 +7,43 @@ const inputUserName = document.querySelector('#username');
 const inputWbsite = document.querySelector('#website');
 const form = document.querySelector('#form');
 
-const fetchUsuarios = () => {
-    fetch('https://jsonplaceholder.typicode.com/users')
-        .then(response => response.json())
-        .then(data => { mostrarUsuarios(data) })
-        .catch(error => console.log(error))
-        .finally(() => guardarUsuariosLocalStorage())
+const fetchUsuarios = async () => {
+    try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/users');
+        const data = await response.json();
+        mostrarUsuarios(data);
+        guardarUsuariosLocalStorage(data);
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 const mostrarUsuarios = (data) => {
     const tbody = tblUsuarios.querySelector('tbody');
+    tbody.innerHTML = '';
     data.forEach(usuario => {
-        let fila = tbody.insertRow();
+        const fila = document.createElement('tr');
         fila.id = usuario.id;
-        const celdaId = fila.insertCell();
-        celdaId.textContent = usuario.id;
-        celdaId.dataset.id = usuario.id;
-
-        const celdaNombre = fila.insertCell();
-        celdaNombre.textContent = usuario.name;
-        celdaNombre.dataset.nombre = usuario.name;
-
-        const celdaNombreUsuario = fila.insertCell();
-        celdaNombreUsuario.textContent = usuario.username;
-        celdaNombreUsuario.dataset.nombreUsuario = usuario.username;
-
-        const celdaWebSite = fila.insertCell();
-        celdaWebSite.textContent = usuario.website;
-        celdaWebSite.dataset.website = usuario.website;
-
-
-        const btnEliminar = document.createElement('button');
-        btnEliminar.textContent = 'Eliminar';
-        btnEliminar.className = 'btnEliminar';
-        btnEliminar.onclick = () => eliminarUsuario(usuario)
-        
-        const btnEditar = document.createElement('button');
-        btnEditar.textContent = 'Editar';
-        btnEditar.className = 'btnEditar';
-        btnEditar.onclick = () => editarUsuario(usuario);
-
-        fila.insertCell().append(btnEliminar);
-        fila.insertCell().append(btnEditar);
-
-        guardarUsuariosLocalStorage(fila);
+        fila.innerHTML = `
+            <td>${usuario.id}</td>
+            <td data-nombre="${usuario.name}">${usuario.name}</td>
+            <td data-nombre-usuario="${usuario.username}">${usuario.username}</td>
+            <td data-website="${usuario.website}">${usuario.website}</td>
+            <td><button class="btnEliminar" onclick="eliminarUsuario(${usuario.id})">Eliminar</button></td>
+            <td><button class="btnEditar" onclick="editarUsuario(${usuario.id})">Editar</button></td>
+        `;
+        tbody.appendChild(fila);
     });
 }
 
-form
-
-const guardarUsuariosLocalStorage = (usuario) => {
-    localStorage.setItem(usuario.id, JSON.stringify(usuario));
+const guardarUsuariosLocalStorage = (data) => {
+    data.forEach(usuario => {
+        localStorage.setItem(usuario.id, JSON.stringify(usuario));
+    });
 }
 
-const editarUsuario = (usuario) => {
+const editarUsuario = (id) => {
+    const usuario = JSON.parse(localStorage.getItem(id));
     seccionFormulario.style.display = 'block';
     inputId.value = usuario.id;
     inputName.value = usuario.name;
@@ -68,17 +51,15 @@ const editarUsuario = (usuario) => {
     inputWbsite.value = usuario.website;
 }
 
-const eliminarUsuario = (usuario) => {
-    const fila = document.querySelector(`#tblUsuarios tbody tr[id="${usuario.id}"]`);
+const eliminarUsuario = (id) => {
+    const fila = document.querySelector(`#tblUsuarios tbody tr[id="${id}"]`);
     if (fila) {
         fila.remove();
-        localStorage.removeItem(usuario.id);
+        localStorage.removeItem(id);
     }
 }
 
 btnRefrescar.onclick = () => {
-    const tbody = tblUsuarios.querySelector('tbody');
-    tbody.innerHTML = '';
     fetchUsuarios();
 }
 
@@ -102,4 +83,3 @@ form.addEventListener('submit', (e) => {
 });
 
 fetchUsuarios();
-

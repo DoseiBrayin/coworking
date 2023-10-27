@@ -23,8 +23,8 @@ const montarUsuarios = (usuarios) =>{
         <td data-name =${usuario.name}>${usuario.name}</td>
         <td data-username =${usuario.username}>${usuario.username}</td>
         <td data-website =${usuario.website}>${usuario.website}</td>
-        <td><button onclick=eliminar(${usuario.id})>Eliminar</button></td>
-        <td><button onclick=editar(${usuario.id})>Editar</button></td>
+        <td><button onclick=eliminar(${usuario.id}) class="btn btn-eliminar">Eliminar</button></td>
+        <td><button onclick=editar(${usuario.id}) class="btn btn-editar">Editar</button></td>
         `;
         tbody.appendChild(fila);
     })

@@ -1,3 +1,30 @@
 #secForm{
     display: none;
 }
+
+.btn{
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.btn-eliminar{
+    background-color: red;
+    color: white;
+}
+
+.btn-editar{
+    background-color: darkgoldenrod;
+}
+
+table, th , tr, td{
+    border: 1px solid black;
+}
+
+thead {
+    background-color: #4fb8f5;
+}
+
+tbody {
+    background-color: #f2f2f2;
+}
